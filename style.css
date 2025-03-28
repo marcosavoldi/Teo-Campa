@@ -2,279 +2,425 @@
    RESET E BASE
 ------------------------------ */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #82A6B1;
-    color: #392F5A;
-    line-height: 1.6;
-    padding: 20px;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  body.modal-open {
-    overflow: hidden;
-  }
-  
-  /* ------------------------------
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #82A6B1;
+  color: #392F5A;
+  line-height: 1.6;
+  padding: 20px;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ------------------------------
      CONTENITORE PRINCIPALE
   ------------------------------ */
-  .container {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-    word-wrap: break-word;
-  }
-  
-  /* ------------------------------
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* ------------------------------
      LOGO
   ------------------------------ */
-  .logo {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 20px auto;
-  }
-  
-  /* ------------------------------
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px auto;
+}
+
+/* ------------------------------
      TITOLO E INTRODUZIONE
   ------------------------------ */
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .intro {
-    font-size: 1.2rem;
-    font-weight: 550;
-    margin-bottom: 30px;
-  }
-  
-  /* ------------------------------
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.intro {
+  font-size: 1.2rem;
+  font-weight: 550;
+  margin-bottom: 30px;
+}
+
+/* ------------------------------
      BOX PRINCIPALI (scuri)
   ------------------------------ */
-  .box {
-    background-color: #392F5A;
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  .box-text {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    color: white;
-  }
-  
-  /* ------------------------------
+.box {
+  background-color: #392F5A;
+  border-radius: 25px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.box-text {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+/* ------------------------------
      PULSANTI
   ------------------------------ */
-  button {
-    background-color: #C8553D;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #a63d2d;
-  }
-  
-  /* ------------------------------
+button {
+  background-color: #C8553D;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a63d2d;
+}
+
+/* ------------------------------
      SEZIONI NASCOSTE
   ------------------------------ */
-  .hidden {
-    display: none;
-  }
-  
-  /* ------------------------------
+.hidden {
+  display: none;
+}
+
+/* ------------------------------
      OVERLAY OSCURANTE
   ------------------------------ */
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 900;
-  }
-  
-  /* ------------------------------
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+
+/* ------------------------------
+     BTN CHIUSURA FORM / DIV VIDEO
+  ------------------------------ */
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close-btn:hover {
+  background-color: #C8553D;
+  color: white;
+}
+
+/* ------------------------------
      FORM POPUP
   ------------------------------ */
-  #form-section {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    width: 90%;
-    max-width: 500px;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 10px;
-    border-radius: 25px;
-  }
-  
-  .form-box {
-    background-color: #392F5A;
-    color: white;
-    border-radius: 25px;
-    padding: 20px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: left;
-    word-wrap: break-word;
-  }
-  
-  .form-box label {
-    font-weight: bold;
-    font-size: 1rem;
-    margin-top: 10px;
-  }
-  
-  .form-box input,
-  .form-box textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 100%;
-    resize: vertical;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .form-box textarea {
-    min-height: 100px;
-  }
-  
-  .form-box input:focus,
-  .form-box textarea:focus {
-    outline: 2px solid #C8553D;
-    border-color: #C8553D;
-  }
-  
-  .form-box button[type="submit"] {
-    align-self: center;
-    background-color: #C8553D;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .form-box button[type="submit"]:hover {
-    background-color: #a63d2d;
-  }
+#form-section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 25px;
+}
 
-  .error-message {
-    color: #C8553D; /* o anche 'red' */
-    font-size: 0.9rem;
-    margin-top: 5px;
-    display: block;
-  }
-  
-  /* ------------------------------
+.form-box {
+  background-color: #392F5A;
+  color: white;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.form-box label {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.form-box input,
+.form-box textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-box textarea {
+  min-height: 100px;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+  outline: 2px solid #C8553D;
+  border-color: #C8553D;
+}
+
+.form-box button[type="submit"] {
+  align-self: center;
+  background-color: #C8553D;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.form-box button[type="submit"]:hover {
+  background-color: #a63d2d;
+}
+
+.error-message {
+  color: #C8553D;
+  /* o anche 'red' */
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ------------------------------
      MESSAGGIO DI RINGRAZIAMENTO (modale)
   ------------------------------ */
-  #thank-you-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    background-color: #392F5A;
-    color: white;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* ------------------------------
+#thank-you-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: #392F5A;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ------------------------------
+   MODALE VIDEO
+------------------------------ */
+#video-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+#video-modal .modal-box {
+  background-color: #392F5A;
+  color: white;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+#video-modal h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  max-width: 93%;
+}
+
+.video-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  /* Centra il testo */
+}
+
+.video-list li {
+  margin: 12px 0;
+}
+
+.video-list a {
+  color: white;
+  text-decoration: underline;
+  font-size: 1.1rem;
+  font-weight: 600;
+  /* Più marcato */
+  display: inline-block;
+}
+
+.video-list a:hover {
+  color: #FFD5C2;
+}
+
+/* ------------------------------
+     MODALE IMMAGINE GRANDE
+  ------------------------------ */
+
+/* Logo rotondo */
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Modale per immagine ingrandita */
+#logo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-modal.hidden {
+  display: none;
+}
+
+#logo-modal:not(.hidden) {
+  display: flex;
+}
+
+.logo-modal-content {
+  position: relative;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.logo-large {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------------------
      LISTA LINK VIDEO
   ------------------------------ */
-  #video-links ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #video-links li {
-    margin: 10px 0;
-  }
-  
-  #video-links a {
-    color: #392F5A;
-    text-decoration: underline;
-    font-size: 1.05rem;
-  }
-  
-  /* ------------------------------
+#video-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+#video-links li {
+  margin: 10px 0;
+}
+
+#video-links a {
+  color: #392F5A;
+  text-decoration: underline;
+  font-size: 1.05rem;
+}
+
+/* ------------------------------
      MEDIA QUERY - TABLET
   ------------------------------ */
-  @media (min-width: 768px) {
-    h1 {
-      font-size: 2.5rem;
-    }
-  
-    .intro {
-      font-size: 1.4rem;
-    }
-  
-    .box-text {
-      font-size: 1.2rem;
-    }
-  
-    button {
-      font-size: 1.1rem;
-      padding: 14px 28px;
-    }
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
   }
-  
-  /* ------------------------------
+
+  .intro {
+    font-size: 1.4rem;
+  }
+
+  .box-text {
+    font-size: 1.2rem;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+}
+
+/* ------------------------------
      MEDIA QUERY - DESKTOP
   ------------------------------ */
-  @media (min-width: 1024px) {
-    .container {
-      max-width: 800px;
-    }
-  
-    .box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 30px;
-    }
-  
-    .box-text {
-      font-size: 1.3rem;
-      text-align: left;
-    }
-  
-    button {
-      margin-left: 20px;
-    }
+@media (min-width: 1024px) {
+  .container {
+    max-width: 800px;
   }
-  
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+  }
+
+  .box-text {
+    font-size: 1.3rem;
+    text-align: left;
+  }
+
+  button {
+    margin-left: 20px;
+  }
+}
