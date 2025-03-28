@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teo&Campa</title>
+    <!-- Collegamento al foglio di stile esterno -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Overlay oscurante -->
+    <div id="overlay" class="hidden"></div>
+
+    <!-- Form (modale, inizialmente nascosto) -->
+    <section id="form-section" class="hidden">
+        <form action="https://usebasin.com/f/your-endpoint" method="POST" class="form-box modal-box">
+
+            <label for="nome">Come ti chiami?</label>
+            <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" required>
+
+            <label for="email">Hai un'email?</label>
+            <input type="email" id="email" name="email" placeholder="Inserisci la tua mail" required>
+
+            <label for="altezza">Quanto sei alto/a?</label>
+            <input type="number" id="altezza" name="altezza" placeholder="Inserisci la tua altezza in cm">
+
+            <label for="peso">Quanto pesi? Domanda scomoda lo sappiamo. Ma torna utile.</label>
+            <input type="number" id="peso" name="peso" placeholder="Inserisci il tuo peso in kg">
+
+            <label for="allenamento">Ti alleni? Scrivi due righe a riguardo (Quale sport? Quante volte a settimana? Da quanto tempo?)</label>
+            <textarea id="allenamento" name="allenamento"></textarea>
+
+            <label for="attrezzature">Se ti alleni quali attrezzature hai a disposizione? (Vai in palestra, hai a casa i pesi della nonna...)</label>
+            <textarea id="attrezzature" name="attrezzature"></textarea>
+
+            <label for="dolori">Hai dolori? Se sì, scrivi altre due righe a riguardo.</label>
+            <textarea id="dolori" name="dolori"></textarea>
+
+            <label for="visita">Hai fatto qualche visita? (Dall'ortopedico, fisioterapista, osteopata, lo stregone della tua tribù...)</label>
+            <textarea id="visita" name="visita"></textarea>
+
+            <label for="patologie">Hai qualche patologia?</label>
+            <textarea id="patologie" name="patologie"></textarea>
+
+            <label for="altro">Altro da aggiungere? Lasciati andare, non fare il/la timido/a.</label>
+            <textarea id="altro" name="altro"></textarea>
+
+            <button type="submit">INVIA</button>
+        </form>
+    </section>
+
+    <!-- Messaggio di ringraziamento (modale, inizialmente nascosto) -->
+    <div id="thank-you-message" class="hidden modal-box">
+        <p>
+            Ottimo lavoro!<br>
+            Hai fatto il primo passo, grazie.<br>
+            Ora dacci il tempo di capire come aiutarti.<br>
+            Ti contatteremo a breve.
+        </p>
+    </div>
+
+    <!-- Contenitore principale -->
+    <main class="container">
+
+        <!-- Logo -->
+        <img src="logo-placeholder.png" alt="Logo Teo&Campa" class="logo">
+
+        <!-- Titolo e introduzione -->
+        <h1>Teo&amp;Campa</h1>
+        <p class="intro">
+            Hai dolore e non hai idea di cosa fare<br>
+            Benvenuto!
+        </p>
+
+        <!-- Primo box: Form -->
+        <div class="box">
+            <div class="box-text">
+                Compila il form, ci servirà per capire se possiamo aiutarti.
+            </div>
+            <button id="open-form-btn">INIZIA</button>
+        </div>
+
+        <!-- Secondo box: Lista link -->
+        <div class="box">
+            <div class="box-text">
+                Sei curioso di sapere come sta la tua lombare?<br>
+                Prova questo percorso gratuito!
+            </div>
+            <button id="open-links-btn">SCARICA I VIDEO</button>
+        </div>
+
+        <!-- Lista dei link (inizialmente nascosta) -->
+        <section id="video-links" class="hidden">
+            <ul>
+                <li><a href="#" target="_blank">Video Lezione 1</a></li>
+                <li><a href="#" target="_blank">Video Lezione 2</a></li>
+                <li><a href="#" target="_blank">Video Lezione 3</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
