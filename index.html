@@ -58,6 +58,14 @@
             <label for="altro">Altro da aggiungere? Lasciati andare, non fare il/la timido/a.</label>
             <textarea id="altro" name="altro"></textarea>
 
+            <div class="checkbox-container">
+                <label>
+                    <input type="checkbox" id="privacy" required>
+                    Acconsento al trattamento dei miei dati secondo l’
+                    <a href="#privacy-info" id="open-privacy-link">informativa sulla privacy</a>
+                </label>
+            </div>
+
             <button type="submit">INVIA</button>
         </form>
     </section>
@@ -78,21 +86,29 @@
             <button id="close-video-btn" class="close-btn" type="button">×</button>
             <h2>Clikka sui link per scaricare i video!</h2>
             <ul class="video-list">
-                <li><a href="https://drive.google.com/uc?export=download&id=18YM6Vf1uPlTx1imyNppLJx4A6WhcRVvl" download>Intro</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=18YM6Vf1uPlTx1imyNppLJx4A6WhcRVvl"
+                        download>Intro</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1P5_FJgy7d_QDM25sU5DuDpn00drS6f-N" download>Primo test</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=1P5_FJgy7d_QDM25sU5DuDpn00drS6f-N"
+                        download>Primo test</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1K6ZiKEs_Fxi5NVTBr2pbZVj8JsEuYQFb" download>Secondo test</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=1K6ZiKEs_Fxi5NVTBr2pbZVj8JsEuYQFb"
+                        download>Secondo test</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1DDnQsvH-_DOtEHTEcwamgGCmudKPU0iA" download>Terzo test</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=1DDnQsvH-_DOtEHTEcwamgGCmudKPU0iA"
+                        download>Terzo test</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1f2CxSA6VnN_cn4JRqZSFGsa6BXHRW0cC" download>Quarto test</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=1f2CxSA6VnN_cn4JRqZSFGsa6BXHRW0cC"
+                        download>Quarto test</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1eAKs0rTaNrgLlPnPb8A5BRzYdDOPY7Xo" download>Quinto test</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=1eAKs0rTaNrgLlPnPb8A5BRzYdDOPY7Xo"
+                        download>Quinto test</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1r0wdhDkL6ZfDQBcooWPUV-hIan-Gis8U" download>Sesto test</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=1r0wdhDkL6ZfDQBcooWPUV-hIan-Gis8U"
+                        download>Sesto test</a>
                 </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=11BIfd-EBW9KOv3MS4EDXWa5MQ09nd1jK" download>Considerazioni finali</a>
+                <li><a href="https://drive.google.com/uc?export=download&id=11BIfd-EBW9KOv3MS4EDXWa5MQ09nd1jK"
+                        download>Considerazioni finali</a>
                 </li>
             </ul>
         </div>
@@ -145,7 +161,30 @@
             </ul>
         </section>
 
+        <!-- ✅ SEZIONE NASCOSTA CON INFORMATIVA -->
+        <section id="privacy-info" class="hidden modal-box">
+            <div class="modal-content">
+                <button class="close-btn" id="close-privacy">&times;</button>
+                <h2>Informativa sulla Privacy</h2>
+                <p>
+                    Ai sensi del Regolamento (UE) 2016/679 (GDPR), ti informiamo che i dati raccolti attraverso questo
+                    form
+                    (nome ed email) saranno utilizzati esclusivamente per rispondere alla tua richiesta.
+                </p>
+                <p>
+                    Il titolare del trattamento è il progetto "Teo&Campa". I dati vengono inoltrati tramite il servizio
+                    Formspree
+                    e non saranno ceduti a terzi.
+                </p>
+                <p>
+                    Puoi richiedere in qualsiasi momento la modifica o la cancellazione dei tuoi dati scrivendo a:
+                    <strong>teoecampa@gmail.com</strong>.
+                </p>
+            </div>
+        </section>
+
     </main>
+
 
 </body>
 

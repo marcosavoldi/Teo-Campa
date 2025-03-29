@@ -40,6 +40,12 @@ body.modal-open {
   object-fit: cover;
   border-radius: 50%;
   margin: 20px auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 /* ------------------------------
@@ -111,11 +117,9 @@ button:hover {
   z-index: 900;
 }
 
-
 /* ------------------------------
      BTN CHIUSURA FORM / DIV VIDEO
   ------------------------------ */
-
 .close-btn {
   position: absolute;
   top: 20px;
@@ -135,10 +139,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.close-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .close-btn:hover {
@@ -222,10 +222,63 @@ button:hover {
 
 .error-message {
   color: #C8553D;
-  /* o anche 'red' */
   font-size: 0.9rem;
   margin-top: 5px;
   display: block;
+}
+
+/* ------------------------------
+   INFORMATIVA PRIVACY E CHECKBOX
+------------------------------ */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #C8553D;
+  margin: 0;
+}
+
+.checkbox-container label {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.checkbox-container a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ------------------------------
+     PRIVACY MODALE
+  ------------------------------ */
+#privacy-info.hidden {
+  display: none;
+}
+
+#privacy-info {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #392F5A;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.modal-content h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
 
 /* ------------------------------
@@ -248,7 +301,6 @@ button:hover {
   max-width: 500px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
-
 
 /* ------------------------------
    MODALE VIDEO
@@ -287,7 +339,6 @@ button:hover {
   list-style: none;
   padding: 0;
   text-align: center;
-  /* Centra il testo */
 }
 
 .video-list li {
@@ -299,7 +350,6 @@ button:hover {
   text-decoration: underline;
   font-size: 1.1rem;
   font-weight: 600;
-  /* Più marcato */
   display: inline-block;
 }
 
@@ -310,23 +360,6 @@ button:hover {
 /* ------------------------------
      MODALE IMMAGINE GRANDE
   ------------------------------ */
-
-/* Logo rotondo */
-.logo {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 20px auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-/* Modale per immagine ingrandita */
 #logo-modal {
   position: fixed;
   top: 0;

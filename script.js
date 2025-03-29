@@ -12,8 +12,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoImg = document.getElementById("logo-img");
   const logoModal = document.getElementById("logo-modal");
   const closeLogoModal = document.getElementById("close-logo-modal");
+  const privacyLink = document.getElementById("open-privacy-link");
+  const privacyModal = document.getElementById("privacy-info");
+  const closePrivacy = document.getElementById("close-privacy");
 
-  // Evento click su X per chiudere il form
+  // Apri il form
+  openFormBtn.addEventListener("click", function () {
+    formSection.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    body.classList.add("modal-open");
+  });
+
+  // Chiudi il form
   closeFormBtn.addEventListener("click", function () {
     formSection.classList.add("hidden");
     overlay.classList.add("hidden");
@@ -22,14 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
     form.querySelectorAll(".error-message").forEach(el => el.remove());
   });
 
-  // Mostra il form
-  openFormBtn.addEventListener("click", function () {
-    formSection.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-    body.classList.add("modal-open");
+  // Mostra popup privacy
+  privacyLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    privacyModal.classList.remove("hidden");
   });
 
-  // Mostra errore
+  // Chiudi popup privacy
+  closePrivacy.addEventListener("click", function () {
+    privacyModal.classList.add("hidden");
+  });
+
+  // Validazione
   function showError(input, message) {
     let error = input.nextElementSibling;
     if (!error || !error.classList.contains("error-message")) {
@@ -40,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     error.textContent = message;
   }
 
-  // Rimuove errore
   function clearError(input) {
     const error = input.nextElementSibling;
     if (error && error.classList.contains("error-message")) {
@@ -48,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Validazione personalizzata
   function validateForm() {
     let valid = true;
 
@@ -56,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailInput = form.querySelector("#email");
     const altezzaInput = form.querySelector("#altezza");
     const pesoInput = form.querySelector("#peso");
+    const privacyCheckbox = form.querySelector("#privacy");
 
     const nome = nomeInput.value.trim();
     const email = emailInput.value.trim();
@@ -66,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     const numeroRegex = /^\d+(\.\d+)?$/;
 
-    // Nome
     if (!nomeRegex.test(nome)) {
       showError(nomeInput, "Il nome può contenere solo lettere, spazi e apostrofi.");
       valid = false;
@@ -74,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
       clearError(nomeInput);
     }
 
-    // Email
     if (!emailRegex.test(email)) {
       showError(emailInput, "Inserisci un indirizzo email valido.");
       valid = false;
@@ -82,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
       clearError(emailInput);
     }
 
-    // Altezza
     if (!numeroRegex.test(altezza)) {
       showError(altezzaInput, "Inserisci un numero valido per l'altezza.");
       valid = false;
@@ -90,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
       clearError(altezzaInput);
     }
 
-    // Peso
     if (!numeroRegex.test(peso)) {
       showError(pesoInput, "Inserisci un numero valido per il peso.");
       valid = false;
@@ -98,18 +107,17 @@ document.addEventListener("DOMContentLoaded", function () {
       clearError(pesoInput);
     }
 
-    if (!valid) {
-      formSection.scrollTo({ top: 0, behavior: 'smooth' });
-      return false;
+    if (!privacyCheckbox.checked) {
+      alert("Devi accettare l'informativa sulla privacy.");
+      valid = false;
     }
 
-    return true;
+    return valid;
   }
 
-  // Invio form a Formspree
+  // Invia il form
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     const formData = new FormData(form);
@@ -122,8 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(response => {
         if (response.ok) {
           formSection.classList.add("hidden");
-          overlay.classList.remove("hidden");
           thankYouMessage.classList.remove("hidden");
+          overlay.classList.remove("hidden");
 
           setTimeout(() => {
             thankYouMessage.classList.add("hidden");
@@ -141,20 +149,21 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // Apertura modale video
+  // Apri video
   openLinksBtn.addEventListener("click", function () {
     videoModal.classList.remove("hidden");
     overlay.classList.remove("hidden");
     body.classList.add("modal-open");
   });
 
+  // Chiudi video
   closeVideoBtn.addEventListener("click", function () {
     videoModal.classList.add("hidden");
     overlay.classList.add("hidden");
     body.classList.remove("modal-open");
   });
 
-  // Logo cliccabile per ingrandimento
+  // Logo ingrandito
   if (logoImg && logoModal) {
     logoImg.addEventListener("click", () => {
       logoModal.classList.remove("hidden");
