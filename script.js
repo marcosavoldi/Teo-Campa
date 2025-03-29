@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", function () {
   const openFormBtn = document.getElementById("open-form-btn");
   const formSection = document.getElementById("form-section");
@@ -15,15 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoModal = document.getElementById("logo-modal");
   const closeLogoModal = document.getElementById("close-logo-modal");
 
-
-  //Evento click su X chiusura form / div video
-
+  // Evento click su X per chiudere il form
   closeFormBtn.addEventListener("click", function () {
     formSection.classList.add("hidden");
     overlay.classList.add("hidden");
     body.classList.remove("modal-open");
     form.reset();
-    // Pulisce gli errori se presenti
     form.querySelectorAll(".error-message").forEach(el => el.remove());
   });
 
@@ -34,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     body.classList.add("modal-open");
   });
 
-  // Crea o aggiorna un messaggio di errore sotto un campo
+  // Mostra errore
   function showError(input, message) {
     let error = input.nextElementSibling;
     if (!error || !error.classList.contains("error-message")) {
@@ -45,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     error.textContent = message;
   }
 
+  // Rimuove errore
   function clearError(input) {
     const error = input.nextElementSibling;
     if (error && error.classList.contains("error-message")) {
@@ -52,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Validazione personalizzata
   function validateForm() {
     let valid = true;
 
@@ -109,27 +106,42 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Gestione invio
+  // Invio form a Formspree
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     if (!validateForm()) return;
 
-    formSection.classList.add("hidden");
-    overlay.classList.remove("hidden");
-    thankYouMessage.classList.remove("hidden");
+    const formData = new FormData(form);
 
-    setTimeout(() => {
-      thankYouMessage.classList.add("hidden");
-      overlay.classList.add("hidden");
-      body.classList.remove("modal-open");
-      form.reset();
-    }, 5000);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" }
+    })
+      .then(response => {
+        if (response.ok) {
+          formSection.classList.add("hidden");
+          overlay.classList.remove("hidden");
+          thankYouMessage.classList.remove("hidden");
+
+          setTimeout(() => {
+            thankYouMessage.classList.add("hidden");
+            overlay.classList.add("hidden");
+            body.classList.remove("modal-open");
+            form.reset();
+          }, 5000);
+        } else {
+          alert("Errore durante l'invio. Riprova.");
+        }
+      })
+      .catch(error => {
+        console.error("Errore invio:", error);
+        alert("Errore di rete. Controlla la connessione.");
+      });
   });
 
-
-  //Gestione click apertura links
-
+  // Apertura modale video
   openLinksBtn.addEventListener("click", function () {
     videoModal.classList.remove("hidden");
     overlay.classList.remove("hidden");
@@ -142,16 +154,16 @@ document.addEventListener("DOMContentLoaded", function () {
     body.classList.remove("modal-open");
   });
 
-  // Gestione click su logo (solo se presente nel DOM)
-if (logoImg && logoModal) {
-  logoImg.addEventListener("click", () => {
-    logoModal.classList.remove("hidden");
-    body.classList.add("modal-open");
-  });
+  // Logo cliccabile per ingrandimento
+  if (logoImg && logoModal) {
+    logoImg.addEventListener("click", () => {
+      logoModal.classList.remove("hidden");
+      body.classList.add("modal-open");
+    });
 
-  closeLogoModal.addEventListener("click", () => {
-    logoModal.classList.add("hidden");
-    body.classList.remove("modal-open");
-  });
-}
+    closeLogoModal.addEventListener("click", () => {
+      logoModal.classList.add("hidden");
+      body.classList.remove("modal-open");
+    });
+  }
 });
