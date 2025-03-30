@@ -36,11 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
   privacyLink.addEventListener("click", function (e) {
     e.preventDefault();
     privacyModal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    body.classList.add("modal-open");
   });
 
   // Chiudi popup privacy
   closePrivacy.addEventListener("click", function () {
     privacyModal.classList.add("hidden");
+    overlay.classList.add("hidden");
+    body.classList.remove("modal-open");
   });
 
   // Validazione
@@ -69,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const altezzaInput = form.querySelector("#altezza");
     const pesoInput = form.querySelector("#peso");
     const privacyCheckbox = form.querySelector("#privacy");
+    const checkboxContainer = form.querySelector(".checkbox-container");
 
     const nome = nomeInput.value.trim();
     const email = emailInput.value.trim();
@@ -107,8 +112,15 @@ document.addEventListener("DOMContentLoaded", function () {
       clearError(pesoInput);
     }
 
+    // Checkbox privacy – rimuovi messaggio precedente e mostra nuovo se necessario
+    const oldError = checkboxContainer.querySelector(".error-message");
+    if (oldError) oldError.remove();
+
     if (!privacyCheckbox.checked) {
-      alert("Devi accettare l'informativa sulla privacy.");
+      const error = document.createElement("span");
+      error.classList.add("error-message");
+      error.textContent = "Accetta le condizioni per proseguire";
+      checkboxContainer.appendChild(error);
       valid = false;
     }
 
@@ -118,7 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Invia il form
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      const firstError = form.querySelector(".error-message");
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
 
     const formData = new FormData(form);
 

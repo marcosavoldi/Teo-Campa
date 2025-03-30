@@ -256,6 +256,10 @@ button:hover {
   text-decoration: underline;
 }
 
+.checkbox-container .error-message {
+  margin-top: 8px;
+}
+
 /* ------------------------------
      PRIVACY MODALE
   ------------------------------ */
@@ -268,12 +272,23 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #392F5A;
-  color: white;
+  background: #82A6B1;
+  /* Nuovo sfondo */
+  color: #392F5A;
+  /* Testo leggibile */
   padding: 20px;
-  border-radius: 20px;
-  max-width: 90%;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
   z-index: 1001;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#privacy-info p {
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
 .modal-content h2 {
