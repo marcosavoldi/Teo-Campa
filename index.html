@@ -2,182 +2,320 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeoeCampa</title>
-    <!-- Collegamento al foglio di stile esterno -->
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeoeCampa</title>
+  <!-- Collegamento al foglio di stile esterno -->
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Overlay oscurante -->
-    <div id="overlay" class="hidden"></div>
+  <!-- Overlay oscurante -->
+  <div id="overlay" class="hidden"></div>
 
+  <!-- Form (modale, inizialmente nascosto) per Formspree -->
+  <section id="form-section" class="hidden modal">
+    <form action="https://formspree.io/f/mldjwlpq" method="POST" class="form-box" novalidate>
+      <button id="close-form-btn" class="close-btn" type="button">×</button>
+      <label for="nome">Come ti chiami?</label>
+      <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" required>
+      <label for="email">Hai un'email?</label>
+      <input type="email" id="email" name="email" placeholder="Inserisci la tua mail" required>
+      <label for="altezza">Quanto sei alto/a?</label>
+      <input type="number" id="altezza" name="altezza" placeholder="Inserisci la tua altezza in cm">
+      <label for="peso">Quanto pesi? Domanda scomoda lo sappiamo. Ma torna utile.</label>
+      <input type="number" id="peso" name="peso" placeholder="Inserisci il tuo peso in kg">
+      <label for="allenamento">Ti alleni? Scrivi due righe a riguardo (Quale sport? Quante volte a settimana? Da quanto
+        tempo?)</label>
+      <textarea id="allenamento" name="allenamento"></textarea>
+      <label for="attrezzature">Se ti alleni quali attrezzature hai a disposizione? (Vai in palestra, hai a casa i pesi
+        della nonna...)</label>
+      <textarea id="attrezzature" name="attrezzature"></textarea>
+      <label for="dolori">Hai dolori? Se sì, scrivi altre due righe a riguardo.</label>
+      <textarea id="dolori" name="dolori"></textarea>
+      <label for="visita">Hai fatto qualche visita? (Dall'ortopedico, fisioterapista, osteopata, lo stregone della tua
+        tribù...)</label>
+      <textarea id="visita" name="visita"></textarea>
+      <label for="patologie">Hai qualche patologia?</label>
+      <textarea id="patologie" name="patologie"></textarea>
+      <label for="altro">Altro da aggiungere? Lasciati andare, non fare il/la timido/a.</label>
+      <textarea id="altro" name="altro"></textarea>
+      <div class="checkbox-container">
+        <label>
+          <input type="checkbox" id="privacy" required>
+          Acconsento al trattamento dei miei dati secondo l’ <a href="#privacy-info"
+            class="open-privacy-link">informativa sulla privacy</a>
+        </label>
+      </div>
+      <button type="submit">INVIA</button>
+    </form>
+  </section>
 
+  <!-- Messaggio di ringraziamento (modale, inizialmente nascosto) -->
+  <div id="thank-you-message" class="hidden modal">
+    <p>
+      Ottimo lavoro!<br>
+      Hai fatto il primo passo, grazie.<br>
+      Ora dacci il tempo di capire come aiutarti.<br>
+      Ti contatteremo a breve.
+    </p>
+  </div>
 
+  <!-- Form MailerLite (modale, inizialmente nascosto) -->
+  <section id="ml-form-section" class="hidden modal">
+    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1439026/forms/151126560570607390/subscribe"
+      data-code="" method="post">
+      <button id="close-ml-form-btn" class="close-btn" type="button">×</button>
+      <h2>Inserisci la tua email per ricevere i video e rimanere aggiornato!</h2>
+      <input aria-label="nome" aria-required="true" type="text" name="fields[nome]" placeholder="Nome" autocomplete="">
+      <input aria-label="cognome" aria-required="true" type="text" name="fields[cognome]" placeholder="Cognome"
+        autocomplete="">
+      <input aria-label="email" aria-required="true" type="email" name="fields[email]" placeholder="Email"
+        autocomplete="email">
+      <label class="checkbox">
+        <input type="checkbox" name="privacy">
+        <div class="label-description">
+          <p>Ho letto <a href="#privacy-info" class="open-privacy-link">l'informativa sulla privacy</a> e acconsento al
+            trattamento dei miei dati per ricevere la newsletter contenente aggiornamenti, consigli utili e informazioni
+            sui servizi e prodotti offerti.</p>
+        </div>
+      </label>
+      <input type="hidden" name="ml-submit" value="1">
+      <button type="submit" class="primary">Invia</button>
+      <button disabled="disabled" style="display: none;" type="button" class="loading">
+        <span class="sr-only">Loading...</span>
+      </button>
+      <input type="hidden" name="anticsrf" value="true">
+    </form>
+  </section>
 
-
-    <!-- Form (modale, inizialmente nascosto) -->
-    <section id="form-section" class="hidden">
-        <form action="https://formspree.io/f/mldjwlpq" method="POST" class="form-box" novalidate>
-
-            <button id="close-form-btn" class="close-btn" type="button">×</button> <!--Btn chiusura form-->
-
-            <label for="nome">Come ti chiami?</label>
-            <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome" required>
-
-            <label for="email">Hai un'email?</label>
-            <input type="email" id="email" name="email" placeholder="Inserisci la tua mail" required>
-
-            <label for="altezza">Quanto sei alto/a?</label>
-            <input type="number" id="altezza" name="altezza" placeholder="Inserisci la tua altezza in cm">
-
-            <label for="peso">Quanto pesi? Domanda scomoda lo sappiamo. Ma torna utile.</label>
-            <input type="number" id="peso" name="peso" placeholder="Inserisci il tuo peso in kg">
-
-            <label for="allenamento">Ti alleni? Scrivi due righe a riguardo (Quale sport? Quante volte a settimana? Da
-                quanto tempo?)</label>
-            <textarea id="allenamento" name="allenamento"></textarea>
-
-            <label for="attrezzature">Se ti alleni quali attrezzature hai a disposizione? (Vai in palestra, hai a casa i
-                pesi della nonna...)</label>
-            <textarea id="attrezzature" name="attrezzature"></textarea>
-
-            <label for="dolori">Hai dolori? Se sì, scrivi altre due righe a riguardo.</label>
-            <textarea id="dolori" name="dolori"></textarea>
-
-            <label for="visita">Hai fatto qualche visita? (Dall'ortopedico, fisioterapista, osteopata, lo stregone della
-                tua tribù...)</label>
-            <textarea id="visita" name="visita"></textarea>
-
-            <label for="patologie">Hai qualche patologia?</label>
-            <textarea id="patologie" name="patologie"></textarea>
-
-            <label for="altro">Altro da aggiungere? Lasciati andare, non fare il/la timido/a.</label>
-            <textarea id="altro" name="altro"></textarea>
-
-            <div class="checkbox-container">
-                <label>
-                    <input type="checkbox" id="privacy" required>
-                    Acconsento al trattamento dei miei dati secondo l’
-                    <a href="#privacy-info" id="open-privacy-link">informativa sulla privacy</a>
-                </label>
-            </div>
-
-            <button type="submit">INVIA</button>
-        </form>
-    </section>
-
-    <!-- Messaggio di ringraziamento (modale, inizialmente nascosto) -->
-    <div id="thank-you-message" class="hidden modal-box">
-        <p>
-            Ottimo lavoro!<br>
-            Hai fatto il primo passo, grazie.<br>
-            Ora dacci il tempo di capire come aiutarti.<br>
-            Ti contatteremo a breve.
-        </p>
+  <div class="ml-form-successBody row-success" style="display: none">
+    <div class="ml-form-successContent">
+      <h4>Thank you!</h4>
+      <p>You have successfully joined our subscriber list.</p>
     </div>
+  </div>
 
-    <!-- Modale Video Lezioni (inizialmente nascosta) -->
-    <section id="video-modal" class="hidden">
-        <div class="modal-box">
-            <button id="close-video-btn" class="close-btn" type="button">×</button>
-            <h2>Clicka sui link per scaricare i video!</h2>
-            <ul class="video-list">
+  <!--- <script>
+    function ml_webform_success_24604432() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-24604432 .row-success').show();
+      $('.ml-subscribe-form-24604432 .row-form').hide();
+    }
+  </script>-->
 
-                <li><a href="https://drive.google.com/uc?export=download&id=18YM6Vf1uPlTx1imyNppLJx4A6WhcRVvl"
-                    download >Intro</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1P5_FJgy7d_QDM25sU5DuDpn00drS6f-N"
-                        download>Primo test</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1K6ZiKEs_Fxi5NVTBr2pbZVj8JsEuYQFb"
-                        download>Secondo test</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1DDnQsvH-_DOtEHTEcwamgGCmudKPU0iA"
-                        download>Terzo test</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1f2CxSA6VnN_cn4JRqZSFGsa6BXHRW0cC"
-                        download>Quarto test</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1eAKs0rTaNrgLlPnPb8A5BRzYdDOPY7Xo"
-                        download>Quinto test</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=1r0wdhDkL6ZfDQBcooWPUV-hIan-Gis8U"
-                        download>Sesto test</a>
-                </li>
-                <li><a href="https://drive.google.com/uc?export=download&id=11BIfd-EBW9KOv3MS4EDXWa5MQ09nd1jK"
-                        download>Considerazioni finali</a>
-                </li>
-            </ul>
-        </div>
-    </section>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
+    type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/1439026/forms/151126560570607390/takel")
+  </script>
 
-    <!-- Contenitore principale -->
-    <main class="container">
-
-        <!-- Logo -->
-        <img src="logo.jpg" alt="Logo Teo&Campa" class="logo" id="logo-img">
-
-        <!-- Modale immagine grande -->
-        <div id="logo-modal" class="hidden">
-            <div class="logo-modal-content">
-                <button id="close-logo-modal" class="close-btn">×</button>
-                <img src="logo.jpg" alt="Logo grande" class="logo-large">
-            </div>
-        </div>
-
-        <!-- Titolo e introduzione -->
-        <h1>TeoeCampa</h1>
-        <p class="intro">
-            Hai dolore e non hai idea di cosa fare?<br>
-            Benvenuto!
+  <!-- Contenitore principale -->
+  <main class="container">
+    <!-- Logo -->
+    <img src="logo.jpg" alt="Logo Teo&Campa" class="logo" id="logo-img">
+    <!-- Modale immagine grande -->
+    <div id="logo-modal" class="hidden modal">
+      <div class="logo-modal-content">
+        <button id="close-logo-modal" class="close-btn">×</button>
+        <img src="logo.jpg" alt="Logo grande" class="logo-large">
+      </div>
+    </div>
+    <!-- Titolo e introduzione -->
+    <h1>TeoeCampa</h1>
+    <p class="intro">
+      Hai dolore e non hai idea di cosa fare?<br>
+      Benvenuto!
+    </p>
+    <!-- Primo box: Form -->
+    <div class="box">
+      <div class="box-text">
+        Compila il form, ci servirà per capire se possiamo aiutarti.
+      </div>
+      <button id="open-form-btn">INIZIA</button>
+    </div>
+    <!-- Secondo box: Lista link -->
+    <div class="box">
+      <div class="box-text">
+        Sei curioso di sapere come sta la tua lombare?<br>
+        Prova questo percorso gratuito!
+      </div>
+      <button id="open-links-btn">SCARICA I VIDEO</button>
+    </div>
+    <!-- Informativa Privacy -->
+    <section id="privacy-info" class="hidden modal">
+      <div class="modal-content">
+        <button class="close-btn" id="close-privacy">&times;</button>
+        <h2>Informativa sulla Privacy</h2>
+        <p>
+          La presente informativa è fornita ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (“GDPR”) e
+          descrive le modalità di trattamento dei dati personali degli utenti raccolti attraverso il sito web
+          <strong>TeoeCampa</strong> (di seguito, il “Sito”). L’informativa illustra le finalità per cui i dati sono
+          raccolti, come vengono utilizzati, i diritti riconosciuti agli interessati e come è possibile esercitarli.
         </p>
 
-        <!-- Primo box: Form -->
-        <div class="box">
-            <div class="box-text">
-                Compila il form, ci servirà per capire se possiamo aiutarti.
-            </div>
-            <button id="open-form-btn">INIZIA</button>
-        </div>
+        <h3>1. Titolare del trattamento</h3>
+        <p>
+          Il <strong>Titolare del trattamento</strong> dei dati personali raccolti dal Sito è <strong>Andrea
+            Campana</strong>, contattabile all’indirizzo email
+          <a href="mailto:teoecampa@gmail.com">teoecampa@gmail.com</a>. Egli determina le finalità e i mezzi del
+          trattamento dei dati personali nell’ambito del progetto “TeoeCampa”.
+        </p>
 
-        <!-- Secondo box: Lista link -->
-        <div class="box">
-            <div class="box-text">
-                Sei curioso di sapere come sta la tua lombare?<br>
-                Prova questo percorso gratuito!
-            </div>
-            <button id="open-links-btn">SCARICA I VIDEO</button>
-        </div>
+        <h3>2. Trattamento tramite Modulo di Valutazione Personalizzata (Formspree)</h3>
+        <p>
+          Attraverso il modulo principale presente sul Sito, gli utenti possono inviare informazioni per ottenere una
+          valutazione personalizzata di eventuali problematiche fisiche (ad esempio dolori, esigenze di allenamento,
+          attrezzature utilizzate, patologie). In relazione a questo modulo, vengono trattati i seguenti dati personali:
+        </p>
+        <ul>
+          <li>
+            <strong>Finalità del trattamento:</strong> fornire all’utente una valutazione personalizzata e consigli
+            relativi alle problematiche fisiche descritte. Il team di TeoeCampa utilizza le informazioni fornite
+            dall’utente per comprendere la sua situazione (dolori, allenamenti, patologie, ecc.) e offrire un riscontro
+            personalizzato.
+          </li>
+          <li>
+            <strong>Dati personali raccolti:</strong> nome, email, altezza, peso, descrizione dei sintomi o dolori,
+            indicazione di eventuali patologie o visite mediche effettuate. Tali informazioni possono includere <em>dati
+              relativi alla salute</em> dell’utente (ad esempio dettagli su patologie e condizioni fisiche), che
+            rientrano nelle categorie particolari di dati personali ai sensi dell’art. 9 del GDPR.
+          </li>
+          <li>
+            <strong>Base giuridica:</strong> il trattamento è basato sul consenso libero e informato dell’interessato
+            (<em>art. 6, par. 1, lett. a</em>, GDPR). Per il trattamento dei dati sanitari (categorie particolari) è
+            richiesto il consenso esplicito (<em>art. 9, par. 2, lett. a</em>, GDPR), espresso dall’utente mediante
+            l’invio volontario del modulo contenente tali informazioni.
+          </li>
+          <li>
+            <strong>Modalità e ambito di comunicazione:</strong> i dati inseriti nel form vengono trasmessi tramite
+            <strong>Formspree</strong>, un servizio esterno con sede negli Stati Uniti. Ciò comporta un trasferimento di
+            dati al di fuori dell’Unione Europea, svolto nel rispetto degli artt. 44 e seguenti GDPR, ad esempio
+            mediante l’adozione delle Clausole Contrattuali Standard approvate dalla Commissione UE. Formspree agisce in
+            qualità di <em>responsabile esterno del trattamento</em> per conto del Titolare. I dati non sono comunicati
+            a ulteriori terzi né diffusi.
+          </li>
+          <li>
+            <strong>Durata di conservazione:</strong> i dati raccolti tramite il modulo di valutazione personalizzata
+            sono conservati per il tempo strettamente necessario a perseguire la finalità suddetta. In ogni caso, non
+            oltre <strong>12 mesi</strong> dalla ricezione, trascorsi i quali saranno cancellati o resi anonimi, salvo
+            diverso obbligo di legge o necessità di conservazione per l’accertamento di diritti in sede giudiziaria.
+          </li>
+        </ul>
 
+        <h3>3. Trattamento tramite Iscrizione alla Newsletter (MailerLite)</h3>
+        <p>
+          Sul Sito è presente un modulo di iscrizione tramite il servizio <strong>MailerLite</strong>, mediante il quale
+          l’utente può ricevere comunicazioni periodiche, contenuti informativi e promozionali, inclusi video gratuiti e
+          aggiornamenti su prodotti/servizi offerti da TeoeCampa. In tale contesto, vengono trattati i seguenti dati
+          personali:
+        </p>
+        <ul>
+          <li>
+            <strong>Finalità del trattamento:</strong> invio periodico di email con contenuti informativi, materiali
+            gratuiti (come video e guide) e promozioni relative ai servizi o prodotti di TeoeCampa. L’iscrizione alla
+            newsletter consente di tenere aggiornato l’utente sulle novità e le offerte.
+          </li>
+          <li>
+            <strong>Dati personali raccolti:</strong> nome, cognome, email.
+          </li>
+          <li>
+            <strong>Base giuridica:</strong> il trattamento di questi dati per finalità di marketing/newsletter avviene
+            sulla base del consenso dell’interessato (<em>art. 6, par. 1, lett. a</em>, GDPR), espresso al momento
+            dell’iscrizione. L’utente è libero di prestare o meno il consenso e può in ogni momento revocarlo.
+          </li>
+          <li>
+            <strong>Modalità e ambito di comunicazione:</strong> i dati forniti per l’iscrizione alla newsletter sono
+            gestiti attraverso la piattaforma <strong>MailerLite</strong>, con sede al di fuori dell’UE (ad esempio,
+            negli Stati Uniti). Questo trasferimento di dati avviene in conformità con gli artt. 44 e ss. GDPR, anche
+            mediante le <em>Clausole Contrattuali Standard</em>. MailerLite agisce quale <em>responsabile esterno del
+              trattamento</em> per conto del Titolare. I dati non sono ceduti ad altri soggetti né diffusi.
+          </li>
+          <li>
+            <strong>Durata di conservazione:</strong> i dati forniti per la newsletter sono conservati fino a revoca del
+            consenso da parte dell’utente. La disiscrizione può avvenire in qualsiasi momento (es. cliccando sul link
+            “unsubscribe” presente nelle email o contattando il Titolare). Dopo la revoca, i dati sono cancellati o resi
+            anonimi.
+          </li>
+        </ul>
 
-        <!-- ✅ SEZIONE NASCOSTA CON INFORMATIVA -->
-        <section id="privacy-info" class="hidden modal-box">
-            <div class="modal-content">
-                <button class="close-btn" id="close-privacy">&times;</button>
-                <h2>Informativa sulla Privacy</h2>
-                <p>
-                    Ai sensi del Regolamento (UE) 2016/679 (GDPR), ti informiamo che i dati raccolti attraverso questo
-                    form
-                    (nome ed email) saranno utilizzati esclusivamente per rispondere alla tua richiesta.
-                </p>
-                <p>
-                    Il titolare del trattamento è il progetto "Teo&Campa". I dati vengono inoltrati tramite il servizio
-                    Formspree
-                    e non saranno ceduti a terzi.
-                </p>
-                <p>
-                    Puoi richiedere in qualsiasi momento la modifica o la cancellazione dei tuoi dati scrivendo a:
-                    <strong>teoecampa@gmail.com</strong>.
-                </p>
-            </div>
-        </section>
+        <h3>4. Modalità di Trattamento e Sicurezza</h3>
+        <p>
+          I dati personali raccolti tramite il Sito sono trattati nel rispetto dei principi di liceità, correttezza e
+          trasparenza. Il trattamento avviene prevalentemente con strumenti informatici e telematici e, se necessario,
+          anche in forma cartacea, da parte di soggetti autorizzati dal Titolare. Sono adottate misure di sicurezza
+          tecniche e organizzative adeguate a prevenire accessi non autorizzati, divulgazioni, modifiche o perdite dei
+          dati personali, in conformità all’art. 32 del GDPR.
+        </p>
 
-    </main>
+        <h3>5. Diritti dell’Interessato</h3>
+        <p>
+          L’utente, in qualità di interessato, ha i diritti previsti dagli artt. 15–22 del GDPR. In particolare, può in
+          qualsiasi momento:
+        </p>
+        <ul>
+          <li><strong>Diritto di accesso</strong>: ottenere la conferma che sia o meno in corso un trattamento di dati
+            personali che lo riguardano e, in tal caso, accedere a tali dati e alle informazioni relative al
+            trattamento.</li>
+          <li><strong>Diritto di rettifica</strong>: ottenere la modifica dei dati personali inesatti che lo riguardano
+            o l’integrazione di quelli incompleti.</li>
+          <li><strong>Diritto di cancellazione</strong>: ottenere la cancellazione dei dati personali che lo riguardano,
+            se ne ricorrono i presupposti (ad esempio, dati non più necessari o revoca del consenso su cui si basa il
+            trattamento).</li>
+          <li><strong>Diritto di limitazione</strong>: ottenere il blocco del trattamento in determinate circostanze (ad
+            esempio, contestazione sull’esattezza dei dati).</li>
+          <li><strong>Diritto alla portabilità dei dati</strong>: ricevere in un formato strutturato, di uso comune e
+            leggibile da dispositivo automatico i dati personali forniti, per trasmetterli a un altro titolare.</li>
+          <li><strong>Diritto di opposizione</strong>: opporsi, per motivi connessi alla propria situazione particolare,
+            al trattamento dei dati personali basato sul legittimo interesse del Titolare. Inoltre, l’utente ha sempre
+            diritto di opporsi al trattamento per finalità di marketing diretto.</li>
+          <li><strong>Diritto di revoca del consenso</strong>: revocare il consenso in qualsiasi momento, senza
+            pregiudicare la liceità del trattamento basata sul consenso prima della revoca.</li>
+          <li><strong>Diritto di proporre reclamo all’Autorità di controllo</strong>: qualora ritenga che il trattamento
+            dei propri dati sia in violazione della normativa, l’utente può proporre reclamo al Garante per la
+            Protezione dei Dati Personali, secondo le modalità indicate sul sito <a href="https://www.garanteprivacy.it"
+              target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>.</li>
+        </ul>
+        <p>
+          Per esercitare tali diritti, o per ulteriori informazioni in merito al trattamento dei dati personali,
+          l’utente può contattare in qualsiasi momento il Titolare al seguente indirizzo email:
+          <a href="mailto:teoecampa@gmail.com">teoecampa@gmail.com</a>.
+        </p>
 
+        <h3>6. Minori di 14 anni</h3>
+        <p>
+          I servizi e i contenuti di TeoeCampa non sono destinati a minori di 14 anni. Il Sito non raccoglie
+          volontariamente dati personali di minori di tale età. In conformità alla normativa applicabile, i minori di 14
+          anni possono utilizzare i servizi offerti solo con il consenso dei genitori o di chi esercita la
+          responsabilità genitoriale. Qualora il Titolare venisse a conoscenza di aver raccolto informazioni personali
+          da un minore di 14 anni senza la necessaria autorizzazione parentale, provvederà a cancellarle
+          tempestivamente.
+        </p>
+
+        <h3>7. Profilazione e Decisioni Automatizzate</h3>
+        <p>
+          Il Titolare non adotta processi decisionali interamente automatizzati che producano effetti giuridici o
+          analoghi in modo significativo per l’utente ai sensi dell’art. 22 del GDPR. Nello specifico,
+          <strong>non</strong> è effettuata alcuna profilazione <em>automatica</em> degli utenti del Sito. L’eventuale
+          valutazione svolta dal team di TeoeCampa si basa su analisi umane delle informazioni fornite (finalizzata a
+          comprendere meglio le problematiche fisiche e offrire soluzioni personalizzate) ed è pertanto di natura non
+          automatizzata.
+        </p>
+
+        <h3>8. Modifiche all’Informativa</h3>
+        <p>
+          La presente informativa sulla privacy può essere soggetta a modifiche o integrazioni, in particolare in caso
+          di aggiornamenti normativi o modifiche delle modalità di trattamento. Eventuali variazioni sostanziali saranno
+          comunicate agli utenti attraverso il Sito e avranno efficacia dalla data di pubblicazione. È pertanto
+          consigliabile consultare periodicamente questa sezione.
+        </p>
+
+        <p><em>Data di ultimo aggiornamento: 11 aprile 2025.</em></p>
+      </div>
+    </section>
+  </main>
 
 </body>
 

@@ -1,4 +1,18 @@
 /* ------------------------------
+   CSS Variables e Impostazioni Base
+------------------------------ */
+:root {
+  --primary-color: #C8553D;
+  --secondary-color: #392F5A;
+  --background-color: #82A6B1;
+  --modal-bg-color: #392F5A;
+  --privacy-bg-color: #82A6B1;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --border-radius: 25px;
+  --max-width-modal: 500px;
+}
+
+/* ------------------------------
    RESET E BASE
 ------------------------------ */
 * {
@@ -9,8 +23,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #82A6B1;
-  color: #392F5A;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
   line-height: 1.6;
   padding: 20px;
   font-size: 16px;
@@ -23,7 +37,7 @@ body.modal-open {
 
 /* ------------------------------
      CONTENITORE PRINCIPALE
-  ------------------------------ */
+------------------------------ */
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -33,7 +47,7 @@ body.modal-open {
 
 /* ------------------------------
      LOGO
-  ------------------------------ */
+------------------------------ */
 .logo {
   width: 170px;
   height: 170px;
@@ -48,9 +62,13 @@ body.modal-open {
   transform: scale(1.05);
 }
 
+#logo-modal {
+  transform: none !important;
+}
+
 /* ------------------------------
      TITOLO E INTRODUZIONE
-  ------------------------------ */
+------------------------------ */
 h1 {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -64,10 +82,10 @@ h1 {
 
 /* ------------------------------
      BOX PRINCIPALI (scuri)
-  ------------------------------ */
+------------------------------ */
 .box {
-  background-color: #392F5A;
-  border-radius: 25px;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
@@ -81,9 +99,9 @@ h1 {
 
 /* ------------------------------
      PULSANTI
-  ------------------------------ */
+------------------------------ */
 button {
-  background-color: #C8553D;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -99,32 +117,32 @@ button:hover {
 
 /* ------------------------------
      SEZIONI NASCOSTE
-  ------------------------------ */
+------------------------------ */
 .hidden {
   display: none;
 }
 
 /* ------------------------------
      OVERLAY OSCURANTE
-  ------------------------------ */
+------------------------------ */
 #overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--overlay-bg);
   z-index: 900;
 }
 
 /* ------------------------------
-     BTN CHIUSURA FORM / DIV VIDEO
-  ------------------------------ */
+     BTN CHIUSURA (generico)
+------------------------------ */
 .close-btn {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: transparent;
+  background-color: transparent; 
   color: white;
   border: 1px solid white;
   border-radius: 50%;
@@ -142,31 +160,39 @@ button:hover {
 }
 
 .close-btn:hover {
-  background-color: #C8553D;
+  background-color: var(--primary-color);
   color: white;
 }
 
 /* ------------------------------
-     FORM POPUP
-  ------------------------------ */
-#form-section {
+   STILE MODALI (classe comune)
+------------------------------ */
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
   width: 90%;
-  max-width: 500px;
+  max-width: var(--max-width-modal);
   max-height: 90vh;
   overflow-y: auto;
   padding: 10px;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
+}
+
+/* ------------------------------
+     FORM POPUP (Formspree)
+------------------------------ */
+#form-section {
+  /* Usa la classe .modal per le proprietà comuni */
+  background-color: var(--modal-bg-color);
 }
 
 .form-box {
-  background-color: #392F5A;
+  background-color: var(--modal-bg-color);
   color: white;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   padding: 20px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -199,13 +225,13 @@ button:hover {
 
 .form-box input:focus,
 .form-box textarea:focus {
-  outline: 2px solid #C8553D;
-  border-color: #C8553D;
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .form-box button[type="submit"] {
   align-self: center;
-  background-color: #C8553D;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -221,9 +247,9 @@ button:hover {
 }
 
 .error-message {
-  color: #C8553D;
+  color: var(--primary-color);
   font-size: 0.9rem;
-  margin-top: 5px;
+  margin-top: 0px;
   display: block;
 }
 
@@ -242,7 +268,7 @@ button:hover {
 .checkbox-container input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #C8553D;
+  accent-color: var(--primary-color);
   margin: 0;
 }
 
@@ -262,33 +288,18 @@ button:hover {
 
 /* ------------------------------
      PRIVACY MODALE
-  ------------------------------ */
-#privacy-info.hidden {
-  display: none;
-}
-
-#privacy-info {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #82A6B1;
-  /* Nuovo sfondo */
-  color: #392F5A;
-  /* Testo leggibile */
+------------------------------ */
+#privacy-info { 
+  background: var(--privacy-bg-color);
+  color: var(--secondary-color);
   padding: 20px;
-  border-radius: 25px;
-  width: 90%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
-  z-index: 1001;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 #privacy-info p {
   margin-bottom: 15px;
   line-height: 1.6;
+  padding: 5px;
 }
 
 .modal-content h2 {
@@ -298,14 +309,14 @@ button:hover {
 
 /* ------------------------------
      MESSAGGIO DI RINGRAZIAMENTO (modale)
-  ------------------------------ */
+------------------------------ */
 #thank-you-message {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
-  background-color: #392F5A;
+  background-color: var(--modal-bg-color);
   color: white;
   padding: 20px;
   border-radius: 20px;
@@ -313,69 +324,167 @@ button:hover {
   font-size: 1.2rem;
   line-height: 1.6;
   width: 90%;
-  max-width: 500px;
+  max-width: var(--max-width-modal);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------------------------
-   MODALE VIDEO
+     FORM MAILERLITE
 ------------------------------ */
-#video-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  width: 90%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 10px;
-  border-radius: 25px;
+#ml-form-section {
+  background-color: var(--modal-bg-color);
 }
 
-#video-modal .modal-box {
-  background-color: #392F5A;
+.ml-block-form {
+  background-color: var(--modal-bg-color);
   color: white;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   padding: 20px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   text-align: left;
+  word-wrap: break-word;
 }
 
-#video-modal h2 {
+.ml-block-form h2{
+  margin-top: 20px;
+}
+
+.ml-block-form input:first-of-type{
+  margin-top: 10px;
+}
+
+.ml-block-form input,
+.ml-block-form textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ml-block-form textarea {
+  min-height: 100px;
+}
+
+.ml-block-form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ml-block-form button:hover {
+  background-color: #a63d2d;
+}
+
+#close-ml-form-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  line-height: 1;
   text-align: center;
-  margin-top: 35px;
-  margin-bottom: 20px;
-  font-size: 1.3rem;
-  max-width: 93%;
-}
-
-.video-list {
-  list-style: none;
+  cursor: pointer;
+  z-index: 1001;
   padding: 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.video-list li {
-  margin: 12px 0;
+.ml-block-form label.checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px; /* Spazio tra la checkbox e il testo */
 }
 
-.video-list a {
+.ml-block-form label.checkbox input[type="checkbox"] {
+  margin-top: 6px; /* Aggiusta questo valore in base alle tue necessità */
+}
+
+.ml-block-form label.checkbox a {
   color: white;
   text-decoration: underline;
-  font-size: 1.1rem;
-  font-weight: 600;
-  display: inline-block;
+  font-weight: bold;
 }
 
-.video-list a:hover {
-  color: #FFD5C2;
+/* Nuove regole per il messaggio di errore all'interno della label */
+.ml-block-form label.checkbox .error-message {
+  grid-column: 2;    /* L'errore apparirà nella colonna del testo */
+  margin-top: 2px;    /* Riduci lo spazio tra il testo e l'errore */
+  margin-left: 0;     /* Assicurati che l'errore non spinga il testo a destra */
+  font-size: 0.9rem;  /* Dimensione font coerente */
+  color: var(--primary-color); /* Usa il colore primario (o sostituisci con il colore che preferisci) */
 }
+
+/* ------------------------------
+     MEDIA QUERY - TABLET
+------------------------------ */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro {
+    font-size: 1.4rem;
+  }
+
+  .box-text {
+    font-size: 1.2rem;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+}
+
+/* ------------------------------
+     MEDIA QUERY - DESKTOP
+------------------------------ */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 800px;
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+  }
+
+  .box-text {
+    font-size: 1.3rem;
+    text-align: left;
+  }
+
+  button {
+    margin-left: 20px;
+  }
+}
+
+
 
 /* ------------------------------
      MODALE IMMAGINE GRANDE
-  ------------------------------ */
+------------------------------ */
 #logo-modal {
   position: fixed;
   top: 0;
@@ -411,7 +520,7 @@ button:hover {
 
 /* ------------------------------
      LISTA LINK VIDEO
-  ------------------------------ */
+------------------------------ */
 #video-links ul {
   list-style: none;
   padding: 0;
@@ -422,54 +531,7 @@ button:hover {
 }
 
 #video-links a {
-  color: #392F5A;
+  color: var(--secondary-color);
   text-decoration: underline;
   font-size: 1.05rem;
-}
-
-/* ------------------------------
-     MEDIA QUERY - TABLET
-  ------------------------------ */
-@media (min-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .intro {
-    font-size: 1.4rem;
-  }
-
-  .box-text {
-    font-size: 1.2rem;
-  }
-
-  button {
-    font-size: 1.1rem;
-    padding: 14px 28px;
-  }
-}
-
-/* ------------------------------
-     MEDIA QUERY - DESKTOP
-  ------------------------------ */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 800px;
-  }
-
-  .box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-  }
-
-  .box-text {
-    font-size: 1.3rem;
-    text-align: left;
-  }
-
-  button {
-    margin-left: 20px;
-  }
 }
