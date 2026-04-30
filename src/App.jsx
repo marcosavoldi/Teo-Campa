@@ -76,12 +76,13 @@ function App() {
       <Modal
         isOpen={isLogoOpen}
         onClose={() => setIsLogoOpen(false)}
+        contentStyle={{ padding: 0, background: 'transparent', boxShadow: 'none' }}
       >
         <div style={{ textAlign: 'center' }}>
           <img 
             src={logo} 
             alt="Logo Large" 
-            style={{ width: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }} 
+            style={{ width: '100%', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }} 
           />
         </div>
       </Modal>

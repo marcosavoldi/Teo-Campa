@@ -2,26 +2,21 @@ import React from 'react';
 
 const ExerciseSection = () => {
   return (
-    <div className="card animate-fade" style={{ 
-      animationDelay: '0.2s', 
-      paddingLeft: '0', 
-      paddingRight: '0',
-      overflow: 'hidden'
-    }}>
+    <div className="card animate-fade" style={{ animationDelay: '0.2s', padding: '25px' }}>
       <p style={{ 
         textAlign: 'center', 
         fontSize: '1.2rem', 
-        padding: '0 30px 25px 30px', 
+        marginBottom: '20px', 
         fontWeight: '500',
         lineHeight: '1.4'
       }}>
         Ecco un esercizio semplice per la tua postura, soprattutto se passi ore seduto alla scrivania.
       </p>
       <div className="video-container" style={{ 
-        boxShadow: '0 10px 30px rgba(0,0,0,0.4)', 
+        boxShadow: '0 8px 24px rgba(0,0,0,0.3)', 
         border: 'none',
-        borderRadius: '0',
-        width: '100%'
+        borderRadius: '16px',
+        overflow: 'hidden'
       }}>
         <iframe
           src="https://www.youtube.com/embed/r9pZpyjRhaI?modestbranding=1&rel=0&showinfo=0"
