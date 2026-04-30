@@ -5,9 +5,9 @@ const PrivacyContent = () => {
     <div style={{ textAlign: 'left', fontSize: '0.95rem' }}>
       <p style={{ fontWeight: 'bold', marginBottom: '15px' }}>Privacy & Cookie Policy</p>
       <p style={{ fontStyle: 'italic', marginBottom: '15px' }}>Ultimo aggiornamento: 30 aprile 2026</p>
-      
-      <p>La presente informativa descrive le modalità di trattamento dei dati personali degli utenti che visitano il sito web <a href="https://marcosavoldi.github.io/teoecampadev/" target="_blank" rel="noreferrer">https://marcosavoldi.github.io/teoecampadev/</a> e che utilizzano i servizi disponibili sul sito, in particolare il modulo di iscrizione alla newsletter e/o di richiesta dei contenuti informativi gratuiti.</p>
-      
+
+      <p>La presente informativa descrive le modalità di trattamento dei dati personali degli utenti che visitano il sito web teoecampa.it, pubblicato tecnicamente tramite servizio di hosting GitHub Pages, e che utilizzano i servizi disponibili sul sito, in particolare il modulo di iscrizione alla newsletter e/o di richiesta dei contenuti informativi gratuiti.</p>
+
       <p>La presente informativa è resa ai sensi del Regolamento UE 2016/679, “GDPR”, e della normativa italiana applicabile in materia di protezione dei dati personali.</p>
 
       <hr style={hrStyle} />
@@ -15,7 +15,7 @@ const PrivacyContent = () => {
       <h3 style={h3Style}>1. Titolare del trattamento</h3>
       <p>Il Titolare del trattamento è:</p>
       <p><strong>Andrea Campana</strong><br />
-      Email di contatto: <a href="mailto:teoecampa@gmail.com">teoecampa@gmail.com</a></p>
+        Email di contatto: <a href="mailto:teoecampa@gmail.com">teoecampa@gmail.com</a></p>
       <p>Per qualsiasi richiesta relativa al trattamento dei dati personali è possibile contattare il Titolare all’indirizzo email sopra indicato.</p>
 
       <hr style={hrStyle} />
@@ -23,16 +23,16 @@ const PrivacyContent = () => {
       <h3 style={h3Style}>2. Dati personali trattati</h3>
       <p>Attraverso il sito possono essere trattati i seguenti dati personali.</p>
       <p><strong>Dati forniti volontariamente dall’utente</strong><br />
-      Quando l’utente compila il modulo presente sul sito, possono essere raccolti:</p>
+        Quando l’utente compila il modulo presente sul sito, possono essere raccolti:</p>
       <ul style={ulStyle}>
         <li>nome;</li>
         <li>cognome;</li>
         <li>indirizzo email.</li>
       </ul>
       <p>Questi dati sono necessari per permettere l’iscrizione alla newsletter e/o l’invio dei contenuti informativi gratuiti richiesti.</p>
-      
+
       <p><strong>Dati tecnici di navigazione</strong><br />
-      Durante la navigazione sul sito possono essere trattati alcuni dati tecnici, come:</p>
+        Durante la navigazione sul sito possono essere trattati alcuni dati tecnici, come:</p>
       <ul style={ulStyle}>
         <li>indirizzo IP;</li>
         <li>informazioni sul browser e sul dispositivo utilizzato;</li>
@@ -73,12 +73,12 @@ const PrivacyContent = () => {
 
       <h3 style={h3Style}>6. Servizi di terze parti utilizzati</h3>
       <p><strong>MailerLite</strong><br />
-      Per la gestione della newsletter e l’invio delle comunicazioni email, il sito utilizza il servizio MailerLite.</p>
+        Per la gestione della newsletter e l’invio delle comunicazioni email, il sito utilizza il servizio MailerLite.</p>
       <p>Quando l’utente compila il modulo di iscrizione, i dati inseriti possono essere trasmessi a MailerLite, che li tratta per conto del Titolare come responsabile esterno del trattamento.</p>
       <p>MailerLite può trattare i dati secondo le proprie misure di sicurezza e secondo quanto previsto dai propri termini e dalla propria documentazione privacy.</p>
-      
+
       <p><strong>GitHub Pages</strong><br />
-      Il sito è pubblicato tramite GitHub Pages, servizio utilizzato per l’hosting delle pagine web.</p>
+        Il sito è pubblicato tramite GitHub Pages, servizio utilizzato per l’hosting delle pagine web.</p>
       <p>Durante la visita del sito, GitHub può trattare dati tecnici di navigazione, inclusi gli indirizzi IP dei visitatori, per finalità tecniche, di sicurezza e di funzionamento del servizio.</p>
 
       <hr style={hrStyle} />
@@ -124,7 +124,7 @@ const PrivacyContent = () => {
 
       <hr style={hrStyle} />
 
-      <h2 style={{...h3Style, fontSize: '1.4rem'}}>Cookie Policy</h2>
+      <h2 style={{ ...h3Style, fontSize: '1.4rem' }}>Cookie Policy</h2>
 
       <h3 style={h3Style}>11. Cosa sono i cookie</h3>
       <p>I cookie sono piccoli file di testo che i siti web possono salvare sul dispositivo dell’utente durante la navigazione. Possono essere utilizzati per diverse finalità, ad esempio per garantire il funzionamento del sito, memorizzare preferenze o effettuare attività di analisi e profilazione.</p>
