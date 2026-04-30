@@ -104,7 +104,7 @@ const NewsletterForm = ({ onSuccess }) => {
           style={{ marginTop: '4px' }}
         />
         <span>
-          Sì, mi iscrivo e acconsento al trattamento dei miei dati secondo l'informativa sulla privacy.
+          Acconsento al trattamento dei miei dati personali per ricevere via email contenuti informativi, video gratuiti e aggiornamenti, come indicato nella Privacy & Cookie Policy.
         </span>
       </label>
 
