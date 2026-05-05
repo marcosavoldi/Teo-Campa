@@ -7,10 +7,17 @@ const BookingSection = () => {
       <p className="card-title" style={{ textAlign: 'center', marginBottom: '20px', padding: '0 20px' }}>
         Vuoi capire quali sono gli esercizi giusti per te? Prenota qui sotto la tua consulenza gratuita.
       </p>
-      <div style={{ borderRadius: '16px', overflow: 'hidden', background: '#ffffff', transform: 'translateZ(0)', padding: '15px' }}>
+      <div style={{ 
+        borderRadius: '16px', 
+        overflow: 'hidden', 
+        background: '#ffffff', 
+        transform: 'translateZ(0)', 
+        padding: '10px',
+        boxSizing: 'border-box'
+      }}>
         <InlineWidget 
           url="https://calendly.com/teoecampa/30min" 
-          styles={{ height: '700px', width: '100%' }} 
+          styles={{ height: '700px', width: '100%', minWidth: 'auto' }} 
           pageSettings={{
             hideEventTypeDetails: true,
             hideLandingPageDetails: true
