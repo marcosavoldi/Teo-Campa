@@ -17,7 +17,7 @@ const BookingSection = () => {
       }}>
         <InlineWidget 
           url="https://calendly.com/teoecampa/30min" 
-          styles={{ height: '700px', width: '100%', minWidth: 'auto' }} 
+          styles={{ height: '660px', width: '100%', minWidth: 'auto' }} 
           pageSettings={{
             hideEventTypeDetails: true,
             hideLandingPageDetails: true
