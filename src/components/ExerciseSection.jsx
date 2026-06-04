@@ -19,7 +19,7 @@ const ExerciseSection = () => {
         overflow: 'hidden'
       }}>
         <iframe
-          src="https://www.youtube.com/embed/r9pZpyjRhaI?modestbranding=1&rel=0&showinfo=0"
+          src="https://www.youtube.com/embed/AxMClvS9op4?modestbranding=1&rel=0&showinfo=0"
           title="Posture Exercise"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
