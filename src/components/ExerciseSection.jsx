@@ -10,7 +10,7 @@ const ExerciseSection = () => {
         fontWeight: '500',
         lineHeight: '1.4'
       }}>
-        Ecco un esercizio semplice per la tua postura, soprattutto se passi ore seduto alla scrivania.
+        Postura e presenza
       </p>
       <div className="video-container" style={{ 
         boxShadow: '0 8px 24px rgba(0,0,0,0.3)', 
