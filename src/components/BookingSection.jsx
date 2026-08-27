@@ -5,7 +5,7 @@ const BookingSection = () => {
   return (
     <div className="card animate-fade" style={{ animationDelay: '0.3s', padding: '20px 10px' }}>
       <p className="card-title" style={{ textAlign: 'center', marginBottom: '20px', padding: '0 20px' }}>
-        Vuoi capire quali sono gli esercizi giusti per te? Prenota qui sotto la tua consulenza gratuita.
+        Vuoi capire quali sono gli esercizi giusti per te? Partiamo da una chiacchierata gratuita. Prenota qui.
       </p>
       <div style={{ 
         borderRadius: '16px', 
